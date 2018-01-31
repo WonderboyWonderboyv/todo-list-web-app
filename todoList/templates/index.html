@@ -1,0 +1,66 @@
+
+<!DOCTYPE html>
+<html>
+<head>
+	<title>todoList</title>
+    {% load staticfiles %}
+	<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" type="text/css" href="{% static 'css/main.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Lobster+Two" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<div class="mobile">
+        <div class="mainContainer">
+            <header>
+                <a href="#" class="logo">To Do:</a>
+                <a href="#" class="menuBtn">
+                    <span class="lines"></span>
+                </a>
+                <nav class="mainMenu">
+                    <div class="todo" ng-app="todo" ng-controller="TodoController">
+                        <div class="container-fluid">
+                            <br>
+                                <h1>To do List</h1>
+                                 <form ng-submit="todoAdd()">
+                                    <input class='form-control' type="text" name="text" placeholder="Add a new to do item..." ng-model="todoInput">
+                                     <br>
+                                    <button class="btn btn-dark " type="submit">Add</button>
+                                </form>
+                            <br>
+                            <ul class="list-group list-group-flush">
+                            <div ng-repeat="todo in todoList">
+                                <li class="list-group-item"><input type="checkbox" ng-model="todo.done"><span ng-bind="todo.text"></span></li>
+                            </div>
+                            </ul>
+                            <button class="btn btn-dark suBtn" ng-click="remove()">Done</button>
+                        </div>
+                    </div>
+                </nav>
+            </header>
+            <div class="container">
+            </div>
+            <footer>
+            </footer>
+        </div>
+    </div>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		$(document).ready(function(){
+	// menu click event
+        $('.menuBtn').click(function() {
+            $(this).toggleClass('act');
+                if($(this).hasClass('act')) {
+                    $('.mainMenu').addClass('act');
+                }
+                else {
+                    $('.mainMenu').removeClass('act');
+                }
+            });
+        });
+	</script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.6.6/angular.min.js"></script>
+    <script src="{% static 'js/todo.js' %}"></script>
+</body>
+</html>
