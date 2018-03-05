@@ -21,6 +21,7 @@ class ToDoView(APIView):
 			serializer.save()
 			return Response(serializer.data)
 		return Response(serializer.errors, status=status.HTTP_404_BAD_REQUEST)
+		
 class ToDoDetailView(APIView):
 	def get(self, request, pk):
 		todo = get_object_or_404(ToDoItem, pk=pk)

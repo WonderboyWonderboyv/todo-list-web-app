@@ -1,4 +1,3 @@
-
 <!DOCTYPE html>
 <html>
 <head>
@@ -24,7 +23,7 @@
                                  <form ng-submit="todoAdd()">
                                     <input class='form-control' type="text" name="text" placeholder="Add a new to do item..." ng-model="todoInput">
                                      <br>
-                                    <button class="btn btn-dark " type="submit">Add</button>
+                                    <button class="btn btn-dark " type="submit" ng-click="saveData()">Add</button>
                                 </form>
                             <br>
                             <ul class="list-group list-group-flush">
@@ -32,7 +31,11 @@
                                 <li class="list-group-item"><input type="checkbox" ng-model="todo.done"><span ng-bind="todo.text"></span></li>
                             </div>
                             </ul>
+                            <br>
+                            <br>
                             <button class="btn btn-dark suBtn" ng-click="remove()">Done</button>
+                            <br>
+                            <br>
                         </div>
                     </div>
                 </nav>

@@ -3,12 +3,13 @@
 	app.controller('TodoController', function($scope, $http){
 		//$scope.todoList = [{text:'Finish the app..', done:false}];
 		$http.get('/todo/api/').then(function(response){
-			$scope.todoList =response.data;
+			$scope.todoList =[];
 			//console.log(response.data);
 			for(var i=0;i<response.data.length;i++){
 				var todo={};
 				todo.text = response.data[i].text;
 				todo.done = response.data[i].done;
+				todo.id = response.data[i].id;
 				$scope.todoList.push(todo);
 			}
 		});
@@ -33,5 +34,6 @@
 			});
 			
 		};
+		
 	});
 })();
